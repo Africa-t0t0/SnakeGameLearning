@@ -39,7 +39,7 @@ BLUE2 = (0, 100, 255)
 BLACK = (0, 0, 0)
 
 BLOCK_SIZE = 20
-SPEED = 20
+SPEED = 80
 
 
 class SnakeGameAI:
@@ -51,9 +51,9 @@ class SnakeGameAI:
         self.display = pygame.display.set_mode((self.w, self.h))
         pygame.display.set_caption('Snake AI')
         self.clock = pygame.time.Clock()
-        self._reset()
+        self.reset()
 
-    def _reset(self):
+    def reset(self):
         self.direction = Direction.RIGHT
 
         self.head = Point(self.w / 2, self.h / 2)
@@ -139,7 +139,7 @@ class SnakeGameAI:
         clock_wise = [Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP]
         idx = clock_wise.index(self.direction)
 
-        if np.array_equal(action [1, 0, 0]):
+        if np.array_equal(action, [1, 0, 0]):
             new_dir = clock_wise[idx]  # no change
         elif np.array_equal(action, [0, 1, 0]):
             next_idx = (idx + 1) % 4
